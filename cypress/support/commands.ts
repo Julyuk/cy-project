@@ -4,7 +4,7 @@
 import { pick } from "lodash/fp";
 import { format as formatDate } from "date-fns";
 import { isMobile } from "./utils";
-
+import './сommands';
 // Import Cypress Percy plugin command (https://docs.percy.io/docs/cypress)
 import "@percy/cypress";
 
@@ -363,3 +363,4 @@ Cypress.Commands.add("loginByGoogleApi", () => {
     });
   });
 });
+

@@ -19,11 +19,11 @@ module.exports = defineConfig({
     runMode: 2,
   },
   env: {
-    apiUrl: "http://localhost:3001",
+    apiUrl: "http://localhost:3003",
     mobileViewportWidthBreakpoint: 414,
     coverage: false,
     codeCoverage: {
-      url: "http://localhost:3001/__coverage__",
+      url: "http://localhost:13001/__coverage__",
       exclude: "cypress/**/*.*",
     },
     defaultPassword: process.env.SEED_DEFAULT_USER_PASSWORD,
@@ -66,7 +66,7 @@ module.exports = defineConfig({
     },
   },
   e2e: {
-    baseUrl: "http://localhost:3000",
+    baseUrl: "http://localhost:13000",
     specPattern: "cypress/tests/**/*.spec.{js,jsx,ts,tsx}",
     supportFile: "cypress/support/e2e.ts",
     viewportHeight: 1000,
@@ -98,6 +98,11 @@ module.exports = defineConfig({
         "find:database"(queryPayload) {
           return queryDatabase(queryPayload, (data, attrs) => _.find(data.results, attrs));
         },
+
+        'generateRandomShortPassword'(){
+          return Math.random().toString(36).substring(1,3);
+        }
+       
       });
 
       codeCoverageTask(on, config);
