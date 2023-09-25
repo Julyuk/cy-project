@@ -16,10 +16,10 @@ export class MyAccountStep extends GeneralStep{
     signinAndOpenMyAccountWebpage(username,rememberme){
         this.openSigninPage();
         cy.signin({username,rememberme:rememberme});
-        cy.intercept('GET' ,'http://localhost:3001/notifications').as('login');
+        cy.intercept('GET' ,'http://localhost:3003/notifications').as('login');
         cy.wait("@login",100000).then(()=>{
             this.visit();
-        })
+    })
       
         
     }
